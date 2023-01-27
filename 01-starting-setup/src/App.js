@@ -1,5 +1,6 @@
 import React from "react";
 import Expenses from "./components/Expense/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 //화살표 함수로도 가능 강의자 개인적으로 선호 짧기때문
 //그냥 여러가지로 된다정도만 알고 개인이 편한걸로 쓰면됨.
@@ -41,7 +42,7 @@ function App() {
   //JSX문법
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense />
       <Expenses items={expense} />
     </div>
   );

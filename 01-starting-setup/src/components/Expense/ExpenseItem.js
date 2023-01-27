@@ -8,9 +8,8 @@ import { useState } from "react";
 function ExpenseItem(props) {
   const [title, setTitle] = useState(props.title);
 
-  const clickHandler = () => {
-    setTitle("Update!!");
-    console.log(title);
+  const clickHandler = (event) => {
+    setTitle(event.target.value);
   };
 
   return (
