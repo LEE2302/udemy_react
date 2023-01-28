@@ -29,6 +29,10 @@ function App() {
     },
   ];
 
+  const 함수 = (appJS매개변수) => {
+    console.log("In App.js");
+    console.log(appJS매개변수);
+  };
   //** 예전 리액트 사용법이면서 JSX문법이 내부에서는 이런식으로 변환이 되어 html로 보내진다.
   //그렇기 때문에 JSX문법에서 항상 부모요소가 있어야 하는 이유도 아래와 같이 부모없이 동일한 위치에 2개 이상이 안되기 때문에 부모요소안에 자식요소가 여러개가 가능하기 떄문이다.**
   //예전 리액트 프로젝트를 보면 이런식으로 많이 써있고 import도 import React form 'react';를 매 컴포넌트 파일마다 해줬어야했고 많이 보일거다.
@@ -42,7 +46,7 @@ function App() {
   //JSX문법
   return (
     <div>
-      <NewExpense />
+      <NewExpense appJS변수={함수} />
       <Expenses items={expense} />
     </div>
   );
