@@ -1,21 +1,31 @@
 import React from "react";
 import "./NewExpense.css";
-import ExpenseForm from "./ExpenseForm";
+import NewExpenseForm from "./NewExpenseForm";
 
 const NewExpense = (props) => {
-  function saveExpenseDate(매개변수) {
-    const 새로운객체 = {
-      ...매개변수,
+  // function saveNewExpenseDate(data) {
+  //   const saveData = {
+  //     ...data,
+  //     id: Math.random().toString(),
+  //   };
+  //   // console.log(data);
+  //   // console.log(saveData);
+  //   props.saveExpenseDate(saveData);
+  // }
+
+  const saveExpenseDataHandler = (enterdeExpenseData) => {
+    const expenseData = {
+      ...enterdeExpenseData,
       id: Math.random().toString(),
     };
-    console.log(매개변수);
-    console.log(새로운객체);
-    props.appJS변수(새로운객체);
-  }
+    console.log(enterdeExpenseData);
+    props.onAddExpense(expenseData);
+  };
 
   return (
     <div className="new-expense">
-      <ExpenseForm onExpenseDate={saveExpenseDate} />
+      {/* <NewExpenseForm onExpenseDate={saveNewExpenseDate} /> */}
+      <NewExpenseForm onSaveExpenseDate={saveExpenseDataHandler} />
     </div>
   );
 };
