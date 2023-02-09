@@ -16,6 +16,25 @@ function Expenses(props) {
     console.log(selectedYear);
   };
 
+  //필터를 통하여 년도에 맞는 아이템만 보이게
+  const filteredExpenses = props.items.filter((el) => {
+    return el.date.getFullYear().toString() === filteredYear;
+  });
+  // console.log(props.items[0].date.getFullYear().toString());
+
+  //조건을 통하여 년도에 맞게 표시하기 없으면 목록이 없다고 표시
+  let expenseContentList = <p>목롤이 없습니다.</p>;
+  if (filteredExpenses.length > 0) {
+    expenseContentList = filteredExpenses.map((el) => (
+      <ExpenseItem
+        key={el.id}
+        title={el.title}
+        amount={el.amount}
+        date={el.date}
+      />
+    ));
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -26,14 +45,22 @@ function Expenses(props) {
           selected={filteredYear}
           onChahgeFilter={filterChangeHandler}
         />
-        {props.items.map((el) => (
-          <ExpenseItem
-            key={el.id}
-            title={el.title}
-            amount={el.amount}
-            date={el.date}
-          />
-        ))}
+        {/* 변수를 이용한 예제 */}
+        {expenseContentList}
+        {/* 삼항연산자를 이용한 예제 */}
+        {/* {filteredExpenses.length === 0 ? (
+          <p>목록이 없습니다.</p>
+        ) : (
+          filteredExpenses.map((el) => (
+            <ExpenseItem
+              key={el.id}
+              title={el.title}
+              amount={el.amount}
+              date={el.date}
+            />
+          ))
+        )} */}
+        {/* 하드코딩한 예제 */}
         {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}

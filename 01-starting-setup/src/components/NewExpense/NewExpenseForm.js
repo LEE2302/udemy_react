@@ -95,6 +95,11 @@ const NewExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        {/* Cancel 버튼은 props로 상태 관리를 받아오기 
+        이유: 다시 취소를 누르면 부모컴포넌트에서 상태가 변경이 되니깐*/}
+        <button type="button" onClick={props.cancelHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
