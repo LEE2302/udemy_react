@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "../UI/card";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 import "./Expenses.css";
 
 function Expenses(props) {
@@ -22,19 +22,6 @@ function Expenses(props) {
   });
   // console.log(props.items[0].date.getFullYear().toString());
 
-  //조건을 통하여 년도에 맞게 표시하기 없으면 목록이 없다고 표시
-  let expenseContentList = <p>목롤이 없습니다.</p>;
-  if (filteredExpenses.length > 0) {
-    expenseContentList = filteredExpenses.map((el) => (
-      <ExpenseItem
-        key={el.id}
-        title={el.title}
-        amount={el.amount}
-        date={el.date}
-      />
-    ));
-  }
-
   return (
     <div>
       <Card className="expenses">
@@ -46,7 +33,7 @@ function Expenses(props) {
           onChahgeFilter={filterChangeHandler}
         />
         {/* 변수를 이용한 예제 */}
-        {expenseContentList}
+        <ExpensesList items={filteredExpenses} />
         {/* 삼항연산자를 이용한 예제 */}
         {/* {filteredExpenses.length === 0 ? (
           <p>목록이 없습니다.</p>
